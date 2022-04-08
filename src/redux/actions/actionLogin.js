@@ -3,6 +3,11 @@ import { google } from "../../Firebase/firebaseConfig"
 import { typesLogin } from "../types/types"
 
 
+//--------------------Logout----------------------
+
+
+
+
 //---------------------------//
 export const loginGoogle = ()=>{
     return (dispatch)=>{
