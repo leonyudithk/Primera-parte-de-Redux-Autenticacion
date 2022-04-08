@@ -1,9 +1,14 @@
 import React from 'react';
-import ReactDOMClient from 'react-dom/client';
-import AppRouters from './routers/AppRouters';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { store } from './redux/store/store';
+import AppRouters from './routers/AppRouters'
 
-const renderizar = document.getElementById('root')
-ReactDOMClient.createRoot(renderizar).render(
- <AppRouters/>
-)
+
+ReactDOM.render(
+    <Provider store={store}>
+         <AppRouters/>
+    </Provider>,
+    document.getElementById('root')
+  );
 
