@@ -1,9 +1,19 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { logoutAsync } from '../redux/actions/actionLogin';
 
 
 const NavBars = () => {
+
+        const dispatch = useDispatch();
+        const navigate = useNavigate()
+
+    const handleLogout=()=>{
+            dispatch(logoutAsync())
+            navigate("/login")
+    }
     return (
         <div>
             <Navbar bg="dark" variant="dark">
@@ -15,7 +25,7 @@ const NavBars = () => {
                     <Link to="/"><Nav.Link href="#home">Home</Nav.Link></Link>
                         
                         <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
+                        <Nav.Link onClick={handleLogout} >Logout</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

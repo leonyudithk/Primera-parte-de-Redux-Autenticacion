@@ -1,12 +1,29 @@
-import { getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth"
 import { google } from "../../Firebase/firebaseConfig"
 import { typesLogin } from "../types/types"
 
 
 //--------------------Logout----------------------
 
+export const logoutAsync = ()=>{
+    return(dispatch)=>{
+        const auth= getAuth()
+        signOut(auth)
+        .then(({user})=>{
+            dispatch(logoutSync())
+            console.log('Adios')
+      })
+          .catch(error=>{
+              console.warn(error)
+          })
+      }
+  }
 
-
+export const logoutSync = ()=>{
+    return{
+        type: typesLogin.logout
+    }
+}
 
 //---------------------------//
 export const loginGoogle = ()=>{
